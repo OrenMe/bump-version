@@ -127,7 +127,7 @@ app.service( 'GitHub', [ '$http', '$q', 'User', 'Jira', 'linkHeaderParser',
                             msg = commit.commit.message.toLowerCase();
                             if ( msg === bumpVersionPrefix + _currentVersion ||
                                 (msg.includes( "bump" ) && msg.includes( "" + _currentVersion )) ) {
-                                return commits.slice( 1, i );
+                                return commits.slice( 0, i );
                             }
                         }
                         return [];
