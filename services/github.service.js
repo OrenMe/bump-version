@@ -370,7 +370,7 @@ app.service( 'GitHub', [ '$http', '$q', 'User', 'Jira', 'linkHeaderParser',
         function _doGetFileContents() {
             var deferred = $q.defer();
 
-            $http.get( _apiPrefix + '/repos/' + _owner + '/' + _repo + '/contents/' + _defaultSettingsFilePath + '?ref=' + _branch )
+            $http.get( _apiPrefix + '/repos/' + _owner + '/' + _repo + '/contents/' + _defaultSettingsFilePath + '?ref=' + _branch + '&access_token=' + User.getOAuthToken() )
                  .then( function ( response ) {
                      deferred.resolve( { sha: response.data.sha, content: atob( response.data.content ) } );
                  } )
