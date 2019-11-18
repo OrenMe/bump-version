@@ -1,7 +1,7 @@
 app.service('Jira', ['$http', '$q', function ($http, $q) {
 
     var _apiPrefix = 'https://kaltura.atlassian.net/rest/api';
-    var _qaAssignee = 'alexs';
+    var _qaAssignee = 'tzachi';
     var _mergeStatus = 'Merge (Dev)';
 
     this.changeStatuses = function (issues) {

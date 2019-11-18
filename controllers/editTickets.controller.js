@@ -4,7 +4,7 @@ app.controller( 'editTicketsController', [ '$scope', '$location', '$timeout', 'G
         $scope.btnTxt = "Edit";
         $scope.inEditProcess = false;
         $scope.status = 'Ready For QA';
-        $scope.qa = 'Alex Strusberg';
+        $scope.qa = 'Tzachi Guetta';
         var tickets_array = null;
 
         (function () {
