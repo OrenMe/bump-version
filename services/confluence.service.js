@@ -31,8 +31,8 @@ app.service('Confluence', ['$http', '$q', function ($http, $q) {
             .replace('${IMPORTANT_TO_KNOW}', pageData.importantToKnow)
             .replace('${KNOWN_ISSUES}', pageData.knownIssues)
             .replace('${PRE_SANITY_TESTS}', pageData.preSanityTests);
-            return _createPage(directParent, page, pageData.newVersion).then(() => {
-                deferred.resolve();
+            return _createPage(directParent, page, pageData.title).then((res) => {
+                deferred.resolve(res);
             });
         })
         return deferred.promise;
@@ -74,10 +74,12 @@ app.service('Confluence', ['$http', '$q', function ($http, $q) {
                 for (var i = 0; i < children.length; i++) {
                     const child = children[i];
                     if (lookForVersion === child.title) {
-                        deferred.resolve(child);
+                        return deferred.resolve(child);
                     }
                 }
-                deferred.resolve(_getDirectParentPage(version, limit, limit + 25));
+                _getDirectParentPage(version, limit, limit + 25).then((child) => {
+                    deferred.resolve(child);
+                });
             })
             .catch(function (e) {
                 deferred.reject(e);
