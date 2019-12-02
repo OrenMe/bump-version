@@ -19,12 +19,12 @@ app.service('Jira', ['$http', '$q', function ($http, $q) {
         return deferred.promise;
     };
 
-    this.changeAssignee = function (issues) {
+    this.changeAssignee = function (assignee, issues) {
         var deferred = $q.defer();
         var promises = [];
 
         _.forEach(issues, function (issue) {
-            promises.push(_doAssignee(issue, _qaAssignee));
+            promises.push(_doAssignee(issue, assignee));
         });
 
         $q.all(promises).then(function (jiras) {

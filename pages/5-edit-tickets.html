@@ -11,7 +11,13 @@
             <md-divider></md-divider>
             <span class="md-subhead"><b>Tickets:</b> {{tickets}}</span>
             <span class="md-subhead"><b>Move to:</b> {{status}}</span>
-            <span class="md-subhead"><b>Assign to:</b> {{qa}}</span>
+            <span class="md-subhead"><b>Assign to:</b>
+                <md-select ng-model="selectedAssignee">
+                    <md-option ng-value="assignee" ng-repeat="assignee in assignees" ng-click="update(assignee)">
+                        {{assignee.name}}
+                    </md-option>
+                </md-select>
+            </span>
         </md-card-title-text>
     </md-card-title>
     <center>
