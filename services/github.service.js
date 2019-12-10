@@ -337,7 +337,7 @@ app.service( 'GitHub', [ '$http', '$q', 'User', 'Jira', 'linkHeaderParser',
         function _doGetCommits() {
             var deferred = $q.defer();
 
-            $http.get( _apiPrefix + '/repos/' + _owner + '/' + _repo + '/commits?sha=' + _branch )
+            $http.get( _apiPrefix + '/repos/' + _owner + '/' + _repo + '/commits?sha=' + _branch + '&access_token=' + User.getOAuthToken() )
                  .then( function ( response ) {
                      deferred.resolve( response.data );
                  } )
